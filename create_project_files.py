@@ -111,7 +111,7 @@ This project includes the following batch files to help with common development 
             f.write(f"@echo off\n")
             f.write(f"git config --global user.name 'SHAN Konduru'\n")
             f.write(f"git config --global user.email 'ShanKonduru@gmail.com'\n")
-            f.write(f"git init'\n")
+            f.write(f"git init\n")
         print(f"Created: {os.path.join(project_name, '000_init.bat')}")
 
         # 001_env.bat
