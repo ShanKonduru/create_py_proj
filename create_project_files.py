@@ -285,8 +285,8 @@ This project includes the following batch files to help with common development 
         # 000_init.bat
         with open(os.path.join(project_name, "000_init.bat"), "w") as f:
             f.write(f"@echo off\n")
-            f.write(f"git config --global user.name 'SHAN Konduru'\n")
-            f.write(f"git config --global user.email 'ShanKonduru@gmail.com'\n")
+            f.write(f"git config --global user.name 'SHAN Konduru REM Chainge your name'\n")
+            f.write(f"git config --global user.email 'ShanKonduru@gmail.com' REM Chainge your email id \n")
             f.write(f"git init\n")
         print(f"Created: {os.path.join(project_name, '000_init.bat')}")
 
@@ -299,12 +299,13 @@ This project includes the following batch files to help with common development 
         # 002_activate.bat
         with open(os.path.join(project_name, "002_activate.bat"), "w") as f:
             f.write(f"@echo off\n")
-            f.write(f".\\venv\\Scripts\\activate\n")
+            f.write(f".\\.venv\\Scripts\\activate\n")
         print(f"Created: {os.path.join(project_name, '002_activate.bat')}")
 
         # 003_setup.bat
         with open(os.path.join(project_name, "003_setup.bat"), "w") as f:
             f.write(f"@echo off\n")
+            f.write(f"python.exe -m pip install --upgrade pip\n")
             f.write(f"pip install -r requirements.txt\n")
         print(f"Created: {os.path.join(project_name, '003_setup.bat')}")
 
@@ -317,7 +318,7 @@ This project includes the following batch files to help with common development 
         # 005_deactivate.bat
         with open(os.path.join(project_name, "005_deactivate.bat"), "w") as f:
             f.write(f"@echo off\n")
-            f.write(f".\\venv\\Scripts\\deactivate\n")
+            f.write(f".\\.venv\\Scripts\\deactivate\n")
         print(f"Created: {os.path.join(project_name, '005_deactivate.bat')}")
     else:
         print("\nBatch file creation skipped (only supported on Windows).")
