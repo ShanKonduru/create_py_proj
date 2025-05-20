@@ -284,7 +284,8 @@ This project includes the following batch files to help with common development 
 * `002_activate.bat`: Activates the `venv` virtual environment.
 * `003_setup.bat`: Installs the Python packages listed in `requirements.txt` using `pip`.
 * `004_run.bat`: Executes the main Python script (`main.py`).
-* `005_deactivate.bat`: Deactivates the currently active virtual environment.
+* `005_run_test.bat`: Executes the pytest  scripts (`test_main.py`).
+* `008_deactivate.bat`: Deactivates the currently active virtual environment.
 
 ## Contributing
 
