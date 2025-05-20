@@ -350,10 +350,10 @@ This project includes the following batch files to help with common development 
         print(f"Created: {os.path.join(project_name, '005_run_test.bat')}")
 
         # 008_deactivate.bat
-        with open(os.path.join(project_name, "005_deactivate.bat"), "w") as f:
+        with open(os.path.join(project_name, "008_deactivate.bat"), "w") as f:
             f.write(f"@echo off\n")
             f.write(f".\\.venv\\Scripts\\deactivate\n")
-        print(f"Created: {os.path.join(project_name, '005_deactivate.bat')}")
+        print(f"Created: {os.path.join(project_name, '008_deactivate.bat')}")
     else:
         print("\nBatch file creation skipped (only supported on Windows).")
 
