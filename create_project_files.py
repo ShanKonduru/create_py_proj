@@ -16,6 +16,12 @@ def create_project_files(project_name):
 
     # Create the main application file
     main_py_content = """
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
+# openai_api_key = os.getenv("OPENAI_API_KEY")
+
 def main():
     print("Hello, World!")
 
@@ -26,6 +32,24 @@ if __name__ == "__main__":
         f.write(main_py_content)
     print(f"Created: {os.path.join(project_name, 'main.py')}")
 
+    # Create the main application file
+    test_main_py_content = """
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
+# openai_api_key = os.getenv("OPENAI_API_KEY")
+
+def add(x, y):
+    return x + y
+def test_add_positive_numbers():
+    assert add(2, 3) == 5
+"""
+    with open(os.path.join(project_name, "test_main.py"), "w") as f:
+        f.write(test_main_py_content)
+    print(f"Created: {os.path.join(project_name, 'test_main.py')}")
+
+
     # Create the .env file
     with open(os.path.join(project_name, ".env"), "w") as f:
         f.write("# Environment variables go here\n")
@@ -34,6 +58,8 @@ if __name__ == "__main__":
     # Create the requirements.txt file
     with open(os.path.join(project_name, "requirements.txt"), "w") as f:
         f.write("# List your project dependencies here\n")
+        f.write("dotenv\n")
+        f.write("pytest\n")
     print(f"Created: {os.path.join(project_name, 'requirements.txt')}")
 
     # Create the .gitignore file
@@ -285,8 +311,10 @@ This project includes the following batch files to help with common development 
         # 000_init.bat
         with open(os.path.join(project_name, "000_init.bat"), "w") as f:
             f.write(f"@echo off\n")
-            f.write(f"git config --global user.name 'SHAN Konduru REM Chainge your name'\n")
-            f.write(f"git config --global user.email 'ShanKonduru@gmail.com' REM Chainge your email id \n")
+            f.write(f"REM Chainge your name\n")
+            f.write(f"git config --global user.name 'SHAN Konduru'\n")
+            f.write(f"REM Chainge your email id \n")
+            f.write(f"git config --global user.email 'ShanKonduru@gmail.com' \n")
             f.write(f"git init\n")
         print(f"Created: {os.path.join(project_name, '000_init.bat')}")
 
@@ -315,7 +343,13 @@ This project includes the following batch files to help with common development 
             f.write(f"python main.py\n")
         print(f"Created: {os.path.join(project_name, '004_run.bat')}")
 
-        # 005_deactivate.bat
+        # 005_run_test.bat
+        with open(os.path.join(project_name, "005_run_test.bat"), "w") as f:
+            f.write(f"@echo off\n")
+            f.write(f"pytest\n")
+        print(f"Created: {os.path.join(project_name, '005_run_test.bat')}")
+
+        # 008_deactivate.bat
         with open(os.path.join(project_name, "005_deactivate.bat"), "w") as f:
             f.write(f"@echo off\n")
             f.write(f".\\.venv\\Scripts\\deactivate\n")
