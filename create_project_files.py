@@ -313,9 +313,9 @@ This project includes the following batch files to help with common development 
         with open(os.path.join(project_name, "000_init.bat"), "w") as f:
             f.write(f"@echo off\n")
             f.write(f"REM Chainge your name\n")
-            f.write(f"git config --global user.name 'SHAN Konduru'\n")
+            f.write(f"git config --global --replace-all user.name 'SHAN Konduru'\n")
             f.write(f"REM Chainge your email id \n")
-            f.write(f"git config --global user.email 'ShanKonduru@gmail.com' \n")
+            f.write(f"git config --global --replace-all user.email 'ShanKonduru@gmail.com' \n")
             f.write(f"git init\n")
         print(f"Created: {os.path.join(project_name, '000_init.bat')}")
 
