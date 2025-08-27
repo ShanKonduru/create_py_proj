@@ -1,2 +1,2 @@
 @echo off
-python create_project_files.py
+py create_project_files.py

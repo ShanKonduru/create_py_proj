@@ -322,7 +322,7 @@ This project includes the following batch files to help with common development 
         # 001_env.bat
         with open(os.path.join(project_name, "001_env.bat"), "w") as f:
             f.write(f"@echo off\n")
-            f.write(f"python -m venv .venv\n")
+            f.write(f"py -m venv .venv\n")
         print(f"Created: {os.path.join(project_name, '001_env.bat')}")
 
         # 002_activate.bat
@@ -334,14 +334,14 @@ This project includes the following batch files to help with common development 
         # 003_setup.bat
         with open(os.path.join(project_name, "003_setup.bat"), "w") as f:
             f.write(f"@echo off\n")
-            f.write(f"python.exe -m pip install --upgrade pip\n")
+            f.write(f"py -m pip install --upgrade pip\n")
             f.write(f"pip install -r requirements.txt\n")
         print(f"Created: {os.path.join(project_name, '003_setup.bat')}")
 
         # 004_run.bat
         with open(os.path.join(project_name, "004_run.bat"), "w") as f:
             f.write(f"@echo off\n")
-            f.write(f"python main.py\n")
+            f.write(f"py main.py\n")
         print(f"Created: {os.path.join(project_name, '004_run.bat')}")
 
         # 005_run_test.bat
