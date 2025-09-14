@@ -348,7 +348,7 @@ This project includes the following batch files to help with common development 
         # 005_run_test.bat
         with open(os.path.join(project_name, "005_run_test.bat"), "w") as f:
             f.write(f"@echo off\n")
-            f.write(f"pytest --html=test_reports\report.html --self-contained-html \tests\n")
+            f.write(f"pytest --html=test_reports\\report.html --self-contained-html \\tests\n")
         print(f"Created: {os.path.join(project_name, '005_run_test.bat')}")
 
         # 008_deactivate.bat
