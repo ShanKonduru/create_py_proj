@@ -37,14 +37,58 @@ if __name__ == "__main__":
     test_main_py_content = """
 import os
 from dotenv import load_dotenv
+import pytest
 
 load_dotenv()
 # openai_api_key = os.getenv("OPENAI_API_KEY")
 
 def add(x, y):
     return x + y
-def test_add_positive_numbers():
+
+def multiply(x, y):
+    return x * y
+
+def divide(x, y):
+    return x / y
+
+def subtract(x, y):
+    return x - y
+
+@pytest.mark.positive
+def test_add_positive():
     assert add(2, 3) == 5
+
+@pytest.mark.positive
+def test_subtract_positive():
+    assert subtract(10, 4) == 6
+
+@pytest.mark.positive
+def test_multiply_positive():
+    assert multiply(5, 6) == 30
+
+@pytest.mark.positive
+def test_divide_positive():
+    assert divide(10, 2) == 5
+
+@pytest.mark.edge
+def test_add_with_zero():
+    assert add(5, 0) == 5
+
+@pytest.mark.edge
+def test_subtract_with_zero():
+    assert subtract(10, 0) == 10
+
+@pytest.mark.edge
+def test_add_with_negative_numbers():
+    assert add(-2, -3) == -5
+
+@pytest.mark.edge
+def test_multiply_by_zero():
+    assert multiply(100, 0) == 0
+
+@pytest.mark.edge
+def test_divide_negative_numbers():
+    assert divide(-10, -2) == 5
 """
     # Create a 'src' directory (optional, but good practice)
     tests_dir = os.path.join(project_name, "tests")
@@ -58,6 +102,32 @@ def test_add_positive_numbers():
         f.write(test_main_py_content)
     print(f"Created: {os.path.join(project_name, 'tests\\test_main.py')}")
 
+    # create pytest.ini file
+    pytest_ini_content = """
+[pytest]
+markers=
+    unit: Unit tests for individual functions
+    integration: Integration tests between components
+    smoke: Quick smoke tests
+    regression: Regression tests to prevent feature breakage
+    performance: Performance and load tests
+    security: Security-related tests
+    edge: Edge case tests
+    negative: Negative tests to ensure proper error handling
+    positive: Positive tests to ensure expected behavior
+    api: API endpoint tests        
+    db: Database-related tests
+    ui: User interface tests
+    e2e: End-to-end tests
+    functional: Functional tests for specific features
+    """
+    with open(os.path.join(project_name, "tests\\pytest.ini"), "w") as f:
+        f.write(pytest_ini_content)
+    print(f"Created: {os.path.join(project_name, 'tests\\pytest.ini')}")
+
+    with open(os.path.join(project_name, "pytest.ini"), "w") as f:
+        f.write(pytest_ini_content)
+    print(f"Created: {os.path.join(project_name, 'pytest.ini')}")
 
     # Create the .env file
     with open(os.path.join(project_name, ".env"), "w") as f:
