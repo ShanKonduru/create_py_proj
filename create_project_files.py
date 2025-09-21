@@ -120,6 +120,21 @@ markers=
     ui: User interface tests
     e2e: End-to-end tests
     functional: Functional tests for specific features
+    
+[coverage:run]
+source = .
+omit = 
+    */venv/*
+    */tests/*
+    */test_*
+    */conftest.py
+
+[coverage:report]
+exclude_lines =
+    pragma: no cover
+    def __repr__
+    raise AssertionError
+    raise NotImplementedError    
     """
     with open(os.path.join(project_name, "tests\\pytest.ini"), "w") as f:
         f.write(pytest_ini_content)
@@ -140,6 +155,7 @@ markers=
         f.write("dotenv\n")
         f.write("pytest\n")
         f.write("pytest-html\n")
+        f.write("pytest-cov\n")
     print(f"Created: {os.path.join(project_name, 'requirements.txt')}")
 
     # Create the .gitignore file
@@ -346,7 +362,7 @@ cython_debug/
     Run the `003_setup.bat` file. This will install all the packages listed in `requirements.txt`.
 
 5.  **Deactivate the virtual environment (Windows):**
-    Run the `005_deactivate.bat` file.
+    Run the `008_deactivate.bat` file.
 
 ## Usage
 
@@ -365,6 +381,7 @@ This project includes the following batch files to help with common development 
 * `003_setup.bat`: Installs the Python packages listed in `requirements.txt` using `pip`.
 * `004_run.bat`: Executes the main Python script (`main.py`).
 * `005_run_test.bat`: Executes the pytest  scripts (`test_main.py`).
+* `005_run_code_cov.bat`: Executes the code coverage pytest  scripts (`test_main.py`).
 * `008_deactivate.bat`: Deactivates the currently active virtual environment.
 
 ## Contributing
@@ -429,6 +446,12 @@ This project includes the following batch files to help with common development 
             f.write(f"@echo off\n")
             f.write(f"pytest --html=test_reports\\report.html --self-contained-html tests\\\n")
         print(f"Created: {os.path.join(project_name, '005_run_test.bat')}")
+
+        # 005_run_code_cov.bat
+        with open(os.path.join(project_name, "005_run_code_cov.bat"), "w") as f:
+            f.write(f"@echo off\n")
+            f.write(f"pytest --cov=. --cov-report=html tests\\\n")
+        print(f"Created: {os.path.join(project_name, '005_run_code_cov.bat')}")
 
         # 008_deactivate.bat
         with open(os.path.join(project_name, "008_deactivate.bat"), "w") as f:
