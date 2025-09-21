@@ -46,6 +46,14 @@ def add(x, y):
 def test_add_positive_numbers():
     assert add(2, 3) == 5
 """
+    # Create a 'src' directory (optional, but good practice)
+    tests_dir = os.path.join(project_name, "tests")
+    os.makedirs(tests_dir, exist_ok=True)
+    with open(os.path.join(tests_dir, "__init__.py"), "w") as f:
+        pass  # Create an empty __init__.py to make it a package
+    print(f"Created directory: {tests_dir}")
+    print(f"Created: {os.path.join(tests_dir, '__init__.py')}")
+
     with open(os.path.join(project_name, "tests\\test_main.py"), "w") as f:
         f.write(test_main_py_content)
     print(f"Created: {os.path.join(project_name, 'tests\\test_main.py')}")
